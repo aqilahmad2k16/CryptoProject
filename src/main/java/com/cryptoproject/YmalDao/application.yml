@@ -1,0 +1,12 @@
+#  in order to use this properties by springboot first we will have to tell to springboot that you will read all the properties from this YAMl file for that we will have to add addition code for this file
+# server: 
+#     port : 8058
+
+# spring:
+#     profile:
+#         active: prod
+
+# name: prod-YAML
+
+# environment: production
+# enabled: true
