@@ -23,6 +23,10 @@ public interface CryptoRepository extends JpaRepository<CryptoEntity, Long> {
     CryptoHistoryEntity getBySymbol(String symbol);
 
     CryptoEntity findBySymbol(String symbol);
+
+
+    // for test purpose
+    Long findById(Integer id);
     //Doubt
     // @Query (value="SELECT*FROM cryptodata", nativeQuery=true)
     // public Page<CryptoEntity> findAll(Pageable paging);
