@@ -47,18 +47,18 @@ public class CryptoServiceImpl implements CryptoServiceInf {
     @Override
     public CryptoResponse createNewCrypto(CryptoRequest request) {
         // throw an exception when name of crypto is null or length =0
-        if(request.getName().isEmpty() || request.getName().length()==0){
-            throw new BusinessException("601", "Please send proper name, it's blank");
-        }
+        // if(request.getName().isEmpty() || request.getName().length()==0){
+        //     throw new BusinessException("601", "Please send proper name, it's blank");
+        // }
 
 
-        try{
+        // try{
             return CryptoConverter.entityToResponse(repository.save(CryptoConverter.requestToEntity(request)));
-        }catch(IllegalArgumentException e){// IllegalArgumentException when whole data about crypto is null
-            throw new BusinessException("602", "given crypto is null" + e.getMessage());
-        }catch(Exception e){// any other problem occur with the businnes logic
-            throw new BusinessException("603", "there is some service error"+ e.getMessage());
-        }
+        // }catch(IllegalArgumentException e){// IllegalArgumentException when whole data about crypto is null
+        //     throw new BusinessException("602", "given crypto is null" + e.getMessage());
+        // }catch(Exception e){// any other problem occur with the businnes logic
+        //     throw new BusinessException("603", "there is some service error"+ e.getMessage());
+        // }
 
         
     }
@@ -152,6 +152,10 @@ public class CryptoServiceImpl implements CryptoServiceInf {
     public List<CryptoHistoryEntity> getPaginationWithoutNativeQuery() {
 
         return historyRepository.findAllRecordsFromGivenCondtion();
+    }
+
+    public CryptoResponse save(CryptoRequest request) {
+        return null;
     }
 
 }

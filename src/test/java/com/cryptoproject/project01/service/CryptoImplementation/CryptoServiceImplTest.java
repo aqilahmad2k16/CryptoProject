@@ -28,8 +28,9 @@ public class CryptoServiceImplTest {
     // here, mock the object of repository and take test on fake data rather to take data from database 
 
     @Test
-    void testCreateNewCrypto() {
+    void testCreateNewCrypto(){
         CryptoRequest request = new CryptoRequest(); 
+        request.setId(12);
         request.setName("IndianCrypto"); 
         // fake data we have taken for test purpose
         request.setStatus(false);
@@ -38,7 +39,9 @@ public class CryptoServiceImplTest {
 
         CryptoEntity entityResponseDB = new CryptoEntity(); 
         // this data we expect from service method when we call  service method
+
         entityResponseDB.setName("IndianCrypto");
+        entityResponseDB.setId(12);
         entityResponseDB.setStatus(false);
         entityResponseDB.setSymbol("IDC");
         entityResponseDB.setMarketCapital(78100125);
@@ -47,7 +50,7 @@ public class CryptoServiceImplTest {
         
         CryptoResponse actualRespo =  cryptoServiceImpl.createNewCrypto(request);
         // service method will return actual response
-
+        assertEquals(12, actualRespo.getId());
         assertEquals("IndianCrypto", actualRespo.getName());
         assertEquals(false, actualRespo.getStatus());
         assertEquals("IDC", actualRespo.getSymbol());
